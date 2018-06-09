@@ -21,11 +21,11 @@ namespace Logica
             return obj.insert(solicitud);
         }
 
-        public int insertContrato(Atributos solicitud2)
+        /*public int insertContrato(Atributos solicitud2)
         {
             return obj.insertContrato(solicitud2);
-        }
-        ///////
+        }*/
+
        /* public int insertArchivo(Atributos solicitud3)
         {
             return obj.InsertArchivo(solicitud3);

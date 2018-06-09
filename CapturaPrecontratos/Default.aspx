@@ -87,7 +87,7 @@
     <table>
         <tr>
             <th>Unidad Administrativa</th>
-            <th></th>
+            <th>Ejercicio</th>
             
             <th>Dependencia</th>
             <th></th>
@@ -120,7 +120,7 @@
         </tr>
         <tr>
             <th>Partida</th>
-            <th></th>
+            <th>Ejercicio</th>
             <th>Importe Mens</th>
             <th>Importe Total</th>
             <th>Fecha Inicio</th>
@@ -209,9 +209,7 @@
     </table>
      
         <asp:Button ID="btnGuardar" runat="server" OnClick="btnGuardar_Click" Text="Guardar"/>
-        <select>
-            <option value="value">text</option>
-        </select>
+        
          
     </div>
 
