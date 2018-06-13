@@ -100,11 +100,11 @@ namespace CapturaPrecontratos
 
             
             int Solicitud = objFunc.insertDato(objAtributos);
-            int solicitud2 = objFunc.insertContrato(objAtributos);
+            //int solicitud2 = objFunc.insertContrato(objAtributos);
             //int solicitud3 = objFunc.insertArchivo(objAtributos);
             
             Response.Write(Solicitud.ToString());
-            Response.Write(solicitud2.ToString());
+            //Response.Write(solicitud2.ToString());
             //Response.Write(solicitud3.ToString());
             Response.Redirect("~/About");
         }

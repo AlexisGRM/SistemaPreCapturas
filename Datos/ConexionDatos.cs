@@ -42,6 +42,25 @@ namespace Datos
             cmd.Parameters.AddWithValue("@genero", dato.genero);
             cmd.Parameters.AddWithValue("@curp", dato.curp);
 
+            cmd.Parameters.AddWithValue("@dependencia", dato.idDependencia);
+            cmd.Parameters.AddWithValue("@departamento", dato.idDepartamento);
+            cmd.Parameters.AddWithValue("@partida", dato.idPartida);
+            cmd.Parameters.AddWithValue("@ejercicioPartida", dato.ejercicioPartida);
+            cmd.Parameters.AddWithValue("@unidadAdministrativa", dato.unidAdmin);
+            cmd.Parameters.AddWithValue("@ejercioUnidad", dato.ejercicioUnidad);
+            cmd.Parameters.AddWithValue("@solicitante", dato.idSolicitante);
+            cmd.Parameters.AddWithValue("@Ocupacion", dato.OC_IDOcupacion);
+            cmd.Parameters.AddWithValue("@ImporteTotal", dato.importTotal);
+            cmd.Parameters.AddWithValue("@ImporteMensual", dato.importMnesual);
+            cmd.Parameters.AddWithValue("@FechaInicial", dato.fechaIni);
+            cmd.Parameters.AddWithValue("@FechaFinal", dato.fechaFin);
+            cmd.Parameters.AddWithValue("@idEstatusContratoServicios", dato.idEstatus);///
+            cmd.Parameters.AddWithValue("@UsuarioCaptura", dato.usuarioCap);///
+            cmd.Parameters.AddWithValue("@ComputadoraCaptura", dato.compuCap);///
+            cmd.Parameters.AddWithValue("@Actividades", dato.activ);
+            cmd.Parameters.AddWithValue("@Observaciones", dato.observac);
+            cmd.Parameters.AddWithValue("@ST_IDSubTipo", dato.ST_IDSubtipo);
+
 
             sqlConect.Open();
             int id = Convert.ToInt32(cmd.ExecuteScalar());
@@ -98,27 +117,10 @@ namespace Datos
         }
         public int insertContrato(Atributos dato)
         {
-            SqlCommand cmd = new SqlCommand("spInsertcontrato",sqlConect);
+            SqlCommand cmd = new SqlCommand("spSelectUnidadAdmin", sqlConect);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@dependencia",dato.idDependencia);
-            cmd.Parameters.AddWithValue("@departamento",dato.idDepartamento);
-            cmd.Parameters.AddWithValue("@partida",dato.idPartida);
-            cmd.Parameters.AddWithValue("@ejercicioPartida", dato.ejercicioPartida);
-            cmd.Parameters.AddWithValue("@unidadAdministrativa",dato.unidAdmin);
-            cmd.Parameters.AddWithValue("@ejercioUnidad",dato.ejercicioUnidad);   
-            cmd.Parameters.AddWithValue("@solicitante",dato.idSolicitante);
-            cmd.Parameters.AddWithValue("@Ocupacion",dato.OC_IDOcupacion);
-            cmd.Parameters.AddWithValue("@ImporteTotal",dato.importTotal);
-            cmd.Parameters.AddWithValue("@ImporteMensual",dato.importMnesual);
-            cmd.Parameters.AddWithValue("@FechaInicial",dato.fechaIni);
-            cmd.Parameters.AddWithValue("@FechaFinal",dato.fechaFin);
-            cmd.Parameters.AddWithValue("@idEstatusContratoServicios",dato.idEstatus);///
-            cmd.Parameters.AddWithValue("@UsuarioCaptura",dato.usuarioCap);///
-            cmd.Parameters.AddWithValue("@ComputadoraCaptura",dato.compuCap);///
-            cmd.Parameters.AddWithValue("@Actividades",dato.activ);
-            cmd.Parameters.AddWithValue("@Observaciones",dato.observac);
-            cmd.Parameters.AddWithValue("@ST_IDSubTipo",dato.ST_IDSubtipo);            
+                       
             sqlConect.Open();
             int id = Convert.ToInt32(cmd.ExecuteScalar());
             sqlConect.Close();

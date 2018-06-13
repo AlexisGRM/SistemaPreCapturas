@@ -58,5 +58,7 @@ namespace Entidades
         public byte curp2 { get; set; }
         public byte comprobDOM { get; set; }*/
 
+        
+
     }
 }
