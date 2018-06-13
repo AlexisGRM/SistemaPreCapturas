@@ -67,8 +67,8 @@ namespace CapturaPrecontratos
             objAtributos.activ = txbActivi.Text;
             objAtributos.idSolicitante = Convert.ToInt32(ddlSolic.Text);
             objAtributos.observac = txbObserv.Text;
-            objAtributos.usuarioCap2 = txbUsuarioCap.Text;
-            objAtributos.compuCap2 = txbUsuarioCap.Text;
+            objAtributos.usuarioCap = txbUsuarioCap.Text;
+            objAtributos.compuCap = txbUsuarioCap.Text;
             objAtributos.idEstatContratServic = Convert.ToInt16(ddlStatus.Text);
 
             /*if (cbCurriculum.Checked ){ value1 = 1;}

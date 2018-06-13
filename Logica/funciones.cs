@@ -20,6 +20,10 @@ namespace Logica
 
             return obj.insert(solicitud);
         }
+        public int insertPreContrato(Atributos datos)
+        {
+            return obj.insertPreContrato(datos);
+        }
 
         public int insertContrato(Atributos solicitud2)
         {

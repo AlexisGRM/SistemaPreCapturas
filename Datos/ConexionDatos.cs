@@ -49,6 +49,53 @@ namespace Datos
             return id;
 
         }
+        public int insertPreContrato(Atributos datos)
+        {
+            DateTime hoy = DateTime.Today;
+            SqlCommand cmd = new SqlCommand("spInsertPrecontrato", sqlConect);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@paterno", datos.paterno);
+            cmd.Parameters.AddWithValue("@materno", datos.materno);
+            cmd.Parameters.AddWithValue("@nombre", datos.nombre);
+            cmd.Parameters.AddWithValue("@fechaNac", datos.fechaNac);
+            cmd.Parameters.AddWithValue("@lugarNac", datos.lugarNac);
+            cmd.Parameters.AddWithValue("@rfc", datos.rfc);
+            cmd.Parameters.AddWithValue("@Nacion", datos.nacion);
+            cmd.Parameters.AddWithValue("@calle", datos.calle);
+            cmd.Parameters.AddWithValue("@numExter", datos.numExter);
+            cmd.Parameters.AddWithValue("@numInter", datos.numInter);
+            cmd.Parameters.AddWithValue("@colonia", datos.colonia);
+            cmd.Parameters.AddWithValue("@ciudad", datos.ciudad);
+            cmd.Parameters.AddWithValue("@cp", datos.cp);
+            //cmd.Parameters.AddWithValue("@idEstPres", datos.idEstatus);
+            cmd.Parameters.AddWithValue("@fechaCap", hoy);
+            cmd.Parameters.AddWithValue("@usuarioCap", datos.usuarioCap);
+            cmd.Parameters.AddWithValue("@compuCap", datos.compuCap);
+            cmd.Parameters.AddWithValue("@genero", datos.genero);
+            cmd.Parameters.AddWithValue("@curp", datos.curp);
+
+            cmd.Parameters.AddWithValue("@dependencia", datos.idDependencia);
+            cmd.Parameters.AddWithValue("@departamento", datos.idDepartamento);
+            cmd.Parameters.AddWithValue("@partida", datos.idPartida);
+            cmd.Parameters.AddWithValue("@ejercicioPartida", datos.ejercicioPartida);
+            cmd.Parameters.AddWithValue("@unidadAdministrativa", datos.unidAdmin);
+            cmd.Parameters.AddWithValue("@ejercioUnidad", datos.ejercicioUnidad);
+            cmd.Parameters.AddWithValue("@solicitante", datos.idSolicitante);
+            cmd.Parameters.AddWithValue("@Ocupacion", datos.OC_IDOcupacion);
+            cmd.Parameters.AddWithValue("@ImporteTotal", datos.importTotal);
+            cmd.Parameters.AddWithValue("@ImporteMensual", datos.importMnesual);
+            cmd.Parameters.AddWithValue("@FechaInicial", datos.fechaIni);
+            cmd.Parameters.AddWithValue("@FechaFinal", datos.fechaFin);
+            cmd.Parameters.AddWithValue("@idEstatusContratoServicios", datos.idEstatContratServic);///
+            //cmd.Parameters.AddWithValue("@idEstatus", datos.idEstatus);///
+            cmd.Parameters.AddWithValue("@Actividades", datos.activ);
+            cmd.Parameters.AddWithValue("@Observaciones", datos.observac);
+            cmd.Parameters.AddWithValue("@ST_IDSubTipo", datos.ST_IDSubtipo);
+            sqlConect.Open();
+            int id = Convert.ToInt32(cmd.ExecuteScalar());
+            sqlConect.Close();
+            return id;
+        }
         public int insertContrato(Atributos dato)
         {
             SqlCommand cmd = new SqlCommand("spInsertcontrato",sqlConect);
