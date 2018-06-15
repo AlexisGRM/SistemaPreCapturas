@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clienteDatosDemo.cs" />
     <Compile Include="ConexionDatos.cs" />
+    <Compile Include="ConexionDatosUpdate.cs" />
+    <Compile Include="conexionDemo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

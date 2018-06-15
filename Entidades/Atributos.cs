@@ -28,6 +28,7 @@ namespace Entidades
         public string compuCap { get; set; }
         public DateTime fechaCap { get; set; }
 
+        public int idContratoServicio { get; set; }
         public string idDependencia { get; set; }
         public string idDepartamento { get; set; }
         public int idPartida { get; set; }
