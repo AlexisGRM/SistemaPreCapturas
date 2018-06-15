@@ -28,14 +28,14 @@ namespace Entidades
         public string compuCap { get; set; }
         public DateTime fechaCap { get; set; }
 
-        public int idContratoServicio { get; set; }
+
         public string idDependencia { get; set; }
         public string idDepartamento { get; set; }
         public int idPartida { get; set; }
         public Int16 ejercicioPartida { get; set; }
         public string unidAdmin { get; set; }
         public Int16 ejercicioUnidad { get; set; }
-        public int idPrestServic { get; set; }
+        //public int idPrestServic { get; set; }
         public int idSolicitante { get; set; }
         public string OC_IDOcupacion { get; set; }
         public decimal importTotal { get; set; }
@@ -43,8 +43,8 @@ namespace Entidades
         public DateTime fechaIni { get; set; }
         public DateTime fechaFin { get; set; }
         public Int16 idEstatContratServic { get; set; }
-        public string usuarioCap2 { get; set; }
-        public string compuCap2 { get; set; }
+       // public string usuarioCap2 { get; set; }
+       // public string compuCap2 { get; set; }
         public string activ { get; set; }
         public string observac { get; set; }
         public byte ST_IDSubtipo { get; set; }

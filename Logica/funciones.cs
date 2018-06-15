@@ -14,28 +14,25 @@ namespace Logica
     public class funciones
     {
         ConexionDatos obj = new ConexionDatos();
-        ConexionDatosUpdate objUpdate = new ConexionDatosUpdate();
 
         public int insertDato(Atributos solicitud)
         {
 
             return obj.insert(solicitud);
         }
-        public bool ActualizarCliente(Atributos CliNegocio)
+        public int insertPreContrato(Atributos datos)
         {
-            return objUpdate.ActualizarCliente(CliNegocio);
+            return obj.insertPreContrato(datos);
         }
-
-       
 
         /*public int insertContrato(Atributos solicitud2)
         {
             return obj.insertContrato(solicitud2);
         }*/
 
-        /* public int insertArchivo(Atributos solicitud3)
-         {
-             return obj.InsertArchivo(solicitud3);
-         }*/
+       /* public int insertArchivo(Atributos solicitud3)
+        {
+            return obj.InsertArchivo(solicitud3);
+        }*/
     }
 }
