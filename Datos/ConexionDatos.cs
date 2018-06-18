@@ -12,9 +12,16 @@ namespace Datos
 {
     public class ConexionDatos
     {
-        public static string ConexionSql = ConfigurationManager.ConnectionStrings["Conexion"].ToString();
-        SqlConnection sqlConect = new SqlConnection(ConexionSql);
+        //public static string ConexionSql = ConfigurationManager.ConnectionStrings["Conexion"].ToString();
+        public static string ConexionSql1 = ConfigurationManager.ConnectionStrings["PrecontratosConnectionString"].ToString();
 
+        //SqlConnection sqlConect = new SqlConnection(ConexionSql);
+        SqlConnection sqlConect = new SqlConnection(ConexionSql1);
+
+        public int ejemplo (int dato)
+        {
+            return 4;
+        }
 
 
         public int insert(Atributos dato)
@@ -125,6 +132,24 @@ namespace Datos
             int id = Convert.ToInt32(cmd.ExecuteScalar());
             sqlConect.Close();
             return id;
+        }
+
+        public static string ConexionSql = ConfigurationManager.ConnectionStrings["PrecontratosConnectionString"].ToString();
+
+        //SqlConnection sqlConect = new SqlConnection(ConexionSql);
+        SqlConnection sqlConn = new SqlConnection(ConexionSql);
+        public DataSet CargarMunicipios(int estado)
+        {
+
+            SqlCommand cmd = new SqlCommand("spGetMunicipios", sqlConn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@estado", estado);
+            //SqlDataReader render = cmd.ExecuteReader();
+            SqlDataAdapter sda = new SqlDataAdapter();
+            sda.SelectCommand = cmd;
+            DataSet ds = new DataSet();
+            sda.Fill(ds);
+            return ds;
         }
 
         /*public int InsertArchivo(Atributos dato)

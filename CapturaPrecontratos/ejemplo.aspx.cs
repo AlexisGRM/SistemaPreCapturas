@@ -3,6 +3,7 @@ using Logica;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -13,15 +14,13 @@ namespace CapturaPrecontratos
 {
     public partial class ejemplo : System.Web.UI.Page
     {
-        Atributos obj = new Atributos();
-        funciones ClientNego = new funciones();
 
+       
         protected void Page_Load(object sender, EventArgs e)
         {
            
-
         }
-        
+
         protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -31,11 +30,12 @@ namespace CapturaPrecontratos
 
         protected void DropDownList3_TextChanged(object sender, EventArgs e)
         {
-            ///////////////////
+            dataHide.Value = DropDownList3.Text;
+            
 
         }
 
-        
+        Atributos obj = new Atributos();
 
         short ejercicio = 0;
         
@@ -94,16 +94,52 @@ namespace CapturaPrecontratos
         {
             DateTime fi = DateTime.Parse(FechaInicial.Text);
             DateTime ff = DateTime.Parse(FechaFinal.Text);
-            int inporte = int.Parse(ImporteMensual.Text);
+            if (fi<ff)
+            {
+                int importe = int.Parse(ImporteMensual.Text);
+                
+                if (fi.Year==ff.Year)
+                {
+                    importeTotal.Text =( importe * (ff.Month - fi.Month)).ToString();
+                }
+                else
+                {
+                    int primerAño = (fi.Month - 12) * (- 1);
+                    int ultimoAño = ff.Month;
+                    int añoIntermedio = 0;
+                    if (ff.Year == fi.Year + 1)
+                    {
+                        importeTotal.Text = (importe * (primerAño + ultimoAño)).ToString();
 
-            int fim = fi.Month;
-            int ffm = ff.Month;
-            int total = inporte * ( ffm - fim);
-            importeTotal.Text = total.ToString();
+                    }
+                    else
+                    {
+                        int i=1;
+                        do
+                        {
+                            if (fi.Year + i != ff.Year)
+                            {
+                                añoIntermedio = añoIntermedio + 12;
+                                i++;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                           
+                        } while (fi.Year != ff.Year);
+                        importeTotal.Text = (importe * (primerAño +añoIntermedio+ ultimoAño)).ToString();
+
+                    }
+                }
+
+            }
+            
 
 
             //
         }
-         
+
+
     }
 }
