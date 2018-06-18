@@ -41,11 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Atributos.cs" />
-<<<<<<< HEAD
+
     <Compile Include="Contrato.cs" />
-=======
+
     <Compile Include="atributosDemo.cs" />
->>>>>>> 0a3fb84b9716bf01755284f30c6c5c0b0c938655
+
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
