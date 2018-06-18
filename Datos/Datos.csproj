@@ -41,8 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clienteDatosDemo.cs" />
     <Compile Include="ConexionDatos.cs" />
+<<<<<<< HEAD
     <Compile Include="metodos.cs" />
+=======
+    <Compile Include="ConexionDatosUpdate.cs" />
+    <Compile Include="conexionDemo.cs" />
+>>>>>>> 0a3fb84b9716bf01755284f30c6c5c0b0c938655
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
