@@ -46,7 +46,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>--%>
-                    <a class="navbar-brand" runat="server" style="padding:5px 0px" href="~/"><img src="http://www.tijuana.gob.mx/themeTj/logos/escudoWhite.png" width="50px">Registro</a>
+                    <a class="navbar-brand" runat="server" style="padding:5px 0px" href="~/ejemplo"><img src="http://www.tijuana.gob.mx/themeTj/logos/escudoWhite.png" width="50px">Registro</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">

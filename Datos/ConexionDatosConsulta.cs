@@ -9,33 +9,33 @@ using System.Data;
 
 namespace Datos
 {
-    public class clienteDatosDemo
+    public class ConexionDatosConsulta
     {
         SqlConnection cnx;
-        atributosDemo mcEntidad = new atributosDemo();
+        Atributos mcEntidad = new Atributos();
         conexionDemo MiConexi = new conexionDemo();
         SqlCommand cmd = new SqlCommand();
         bool vexito;
-        public clienteDatosDemo()
+        public ConexionDatosConsulta()
         {
-            cnx = new SqlConnection(MiConexi.GetConex());
+            cnx = new SqlConnection(MiConexi.GetConexContrato());
         }
-        public bool InsertarCliente(atributosDemo mcEntidad)
+        public bool InsertarCliente(Atributos mcEntidad)
         {
             cmd.Connection = cnx;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "proc_insertar";
             try
             {
-               
-                cmd.Parameters.Add(new SqlParameter("@nombres", SqlDbType.VarChar, 50));
-                cmd.Parameters["@nombres"].Value = mcEntidad.nombresCliente;
-                cmd.Parameters.Add(new SqlParameter("@apellidos", SqlDbType.VarChar, 100));
-                cmd.Parameters["@apellidos"].Value = mcEntidad.apellidosCliente;
-                cmd.Parameters.Add(new SqlParameter("@correo", SqlDbType.VarChar, 100));
-                cmd.Parameters["@correo"].Value = mcEntidad.correoCliente;
-                cmd.Parameters.Add(new SqlParameter("@estado", SqlDbType.Int));
-                cmd.Parameters["@estado"].Value = mcEntidad.estadoCliente;
+
+                cmd.Parameters.Add(new SqlParameter("@idDependencia", SqlDbType.VarChar, 50));
+                cmd.Parameters["@idDependencia"].Value = mcEntidad.idDependencia;
+                cmd.Parameters.Add(new SqlParameter("@idDepartamento", SqlDbType.VarChar, 100));
+                cmd.Parameters["@idDepartamento"].Value = mcEntidad.idDepartamento;
+                cmd.Parameters.Add(new SqlParameter("@idUnidadAdmin", SqlDbType.VarChar, 100));
+                cmd.Parameters["@idUnidadAdmin"].Value = mcEntidad.unidAdmin;
+                cmd.Parameters.Add(new SqlParameter("@idEstatusContrato", SqlDbType.Int));
+                cmd.Parameters["@idEstatusContrato"].Value = mcEntidad.idEstatContratServic;
                 cnx.Open();
                 cmd.ExecuteNonQuery();
                 vexito = true;
@@ -54,21 +54,21 @@ namespace Datos
             }
             return vexito;
         }
-        public bool ActualizarCliente(atributosDemo mcEntidad)
+        public bool ActualizarCliente(Atributos mcEntidad)
         {
             cmd.Connection = cnx;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "proc_actualizar";
             try
             {
-                cmd.Parameters.Add(new SqlParameter("@codigo", SqlDbType.VarChar, 5));
-                cmd.Parameters["@codigo"].Value = mcEntidad.codigoCliente;
-                cmd.Parameters.Add(new SqlParameter("@nombres", SqlDbType.VarChar, 50));
-                cmd.Parameters["@nombres"].Value = mcEntidad.nombresCliente;
-                cmd.Parameters.Add(new SqlParameter("@apellidos", SqlDbType.VarChar, 100));
-                cmd.Parameters["@apellidos"].Value = mcEntidad.apellidosCliente;
-                cmd.Parameters.Add(new SqlParameter("@correo", SqlDbType.VarChar, 100));
-                cmd.Parameters["@correo"].Value = mcEntidad.correoCliente;
+                cmd.Parameters.Add(new SqlParameter("@idContrato", SqlDbType.VarChar, 5));
+                cmd.Parameters["@idContrato"].Value = mcEntidad.idContratoServicio;
+                cmd.Parameters.Add(new SqlParameter("@idDependencia", SqlDbType.VarChar, 50));
+                cmd.Parameters["@idDependencia"].Value = mcEntidad.idDependencia;
+                cmd.Parameters.Add(new SqlParameter("@idDepartamento", SqlDbType.VarChar, 100));
+                cmd.Parameters["@idDepartamento"].Value = mcEntidad.idDepartamento;
+                cmd.Parameters.Add(new SqlParameter("@idUnidadAdmin", SqlDbType.VarChar, 100));
+                cmd.Parameters["@idUnidadAdmin"].Value = mcEntidad.unidAdmin;
                 cnx.Open();
                 cmd.ExecuteNonQuery();
                 vexito = true;
@@ -87,17 +87,17 @@ namespace Datos
             }
             return vexito;
         }
-        public bool EliminarCliente(atributosDemo mcEntidad)
+        public bool EliminarCliente(Atributos mcEntidad)
         {
             cmd.Connection = cnx;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "proc_eliminar";
             try
             {
-                cmd.Parameters.Add(new SqlParameter("@codigo", SqlDbType.VarChar, 5));
-                cmd.Parameters["@codigo"].Value = mcEntidad.codigoCliente;
-                cmd.Parameters.Add(new SqlParameter("@estado", SqlDbType.Int));
-                cmd.Parameters["@estado"].Value = mcEntidad.estadoCliente;
+                cmd.Parameters.Add(new SqlParameter("@idContrato", SqlDbType.VarChar, 5));
+                cmd.Parameters["@idContrato"].Value = mcEntidad.idContratoServicio;
+                cmd.Parameters.Add(new SqlParameter("@idEstadoContrato", SqlDbType.Int));
+                cmd.Parameters["@idEstadoContrato"].Value = mcEntidad.idEstatContratServic;
                 cnx.Open();
                 cmd.ExecuteNonQuery();
                 vexito = true;
@@ -124,10 +124,10 @@ namespace Datos
                 cmd.Connection = cnx;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "proc_listar";
-                cmd.Parameters.Add(new SqlParameter("@apellidos",parametro));
+                cmd.Parameters.Add(new SqlParameter("@idDependencia", parametro));
                 SqlDataAdapter miada;
                 miada = new SqlDataAdapter(cmd);
-                miada.Fill(dts, "clientes");
+                miada.Fill(dts, "ContratoServicio");
             }
             catch (SqlException ex)
             {
@@ -137,9 +137,9 @@ namespace Datos
             {
                 cmd.Parameters.Clear();
             }
-            return (dts.Tables["clientes"]);
+            return (dts.Tables["ContratoServicio"]);
         }
-        public atributosDemo ConsultarCliente(string codigo)
+        public Atributos ConsultarCliente(string codigo)
         {
             try
             {
@@ -147,8 +147,8 @@ namespace Datos
                 cmd.Connection = cnx;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "proc_consultar";
-                cmd.Parameters.Add(new SqlParameter("@codigo", SqlDbType.VarChar, 10));
-                cmd.Parameters["@codigo"].Value = codigo;
+                cmd.Parameters.Add(new SqlParameter("@idContrato", SqlDbType.VarChar, 10));
+                cmd.Parameters["@idContrato"].Value = codigo;
                 if (cnx.State == ConnectionState.Closed)
                 {
                     cnx.Open();
@@ -157,10 +157,10 @@ namespace Datos
                 if (dtr.HasRows == true)
                 {
                     dtr.Read();
-                    mcEntidad.codigoCliente = Convert.ToString(dtr[0]);
-                    mcEntidad.nombresCliente = Convert.ToString(dtr[1]);
-                    mcEntidad.apellidosCliente = Convert.ToString(dtr[2]);
-                    mcEntidad.correoCliente = Convert.ToString(dtr[3]);
+                    mcEntidad.idContratoServicio = Convert.ToInt16(dtr[0]);
+                    mcEntidad.idDependencia = Convert.ToString(dtr[1]);
+                    mcEntidad.idDepartamento = Convert.ToString(dtr[2]);
+                    mcEntidad.unidAdmin = Convert.ToString(dtr[3]);
                 }
                 cnx.Close();
                 cmd.Parameters.Clear();

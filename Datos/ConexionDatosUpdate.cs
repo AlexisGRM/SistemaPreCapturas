@@ -12,7 +12,7 @@ namespace Datos
     public class ConexionDatosUpdate
     {
         SqlConnection cnx;
-        atributosDemo mcEntidad = new atributosDemo();
+        Atributos mcEntidad = new Atributos();
         conexionDemo MiConexi = new conexionDemo();
         SqlCommand cmd = new SqlCommand();
         bool vexito;
@@ -24,65 +24,10 @@ namespace Datos
         {
             cmd.Connection = cnx;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "proc_actualizar";
+            cmd.CommandText = "spUpdatePrecontrato";
             try
             {
-                cmd.Parameters.Add(new SqlParameter("@prestadorServicios", SqlDbType.VarChar, 5));
-                cmd.Parameters["@prestadorServicios"].Value = mcEntidad.idPrestServic;
-
-                cmd.Parameters.Add(new SqlParameter("@paterno", SqlDbType.VarChar, 50));
-                cmd.Parameters["@paterno"].Value = mcEntidad.paterno;
-
-                cmd.Parameters.Add(new SqlParameter("@materno", SqlDbType.VarChar, 100));
-                cmd.Parameters["@materno"].Value = mcEntidad.materno;
-
-                cmd.Parameters.Add(new SqlParameter("@nombre", SqlDbType.VarChar, 100));
-                cmd.Parameters["@nombre"].Value = mcEntidad.nombre;
-
-                cmd.Parameters.Add(new SqlParameter("@fechaNac", SqlDbType.VarChar, 100));
-                cmd.Parameters["@fechaNac"].Value = mcEntidad.fechaNac;
-
-                cmd.Parameters.Add(new SqlParameter("@lugarNac", SqlDbType.VarChar, 100));
-                cmd.Parameters["@lugarNac"].Value = mcEntidad.lugarNac;
-
-                cmd.Parameters.Add(new SqlParameter("@rfc", SqlDbType.VarChar, 100));
-                cmd.Parameters["@rfc"].Value = mcEntidad.rfc;
-
-                cmd.Parameters.Add(new SqlParameter("@Nacion", SqlDbType.VarChar, 100));
-                cmd.Parameters["@Nacion"].Value = mcEntidad.nacion;
-
-                cmd.Parameters.Add(new SqlParameter("@calle", SqlDbType.VarChar, 100));
-                cmd.Parameters["@calle"].Value = mcEntidad.calle;
-
-                cmd.Parameters.Add(new SqlParameter("@numExter", SqlDbType.VarChar, 100));
-                cmd.Parameters["@numExter"].Value = mcEntidad.numExter;
-
-                cmd.Parameters.Add(new SqlParameter("@numInter", SqlDbType.VarChar, 100));
-                cmd.Parameters["@numInter"].Value = mcEntidad.numInter;
-
-                cmd.Parameters.Add(new SqlParameter("@colonia", SqlDbType.VarChar, 100));
-                cmd.Parameters["@colonia"].Value = mcEntidad.colonia;
-
-                cmd.Parameters.Add(new SqlParameter("@ciudad", SqlDbType.VarChar, 100));
-                cmd.Parameters["@ciudad"].Value = mcEntidad.ciudad;
-
-                cmd.Parameters.Add(new SqlParameter("@cp", SqlDbType.VarChar, 100));
-                cmd.Parameters["@cp"].Value = mcEntidad.cp;
-
-                cmd.Parameters.Add(new SqlParameter("@fechaCap", SqlDbType.VarChar, 100));
-                cmd.Parameters["@fechaCap"].Value = mcEntidad.fechaCap;
-
-                cmd.Parameters.Add(new SqlParameter("@usuarioCap", SqlDbType.VarChar, 100));
-                cmd.Parameters["@usuarioCap"].Value = mcEntidad.usuarioCap;
-
-                cmd.Parameters.Add(new SqlParameter("@compuCap", SqlDbType.VarChar, 100));
-                cmd.Parameters["@compuCap"].Value = mcEntidad.compuCap;
-
-                cmd.Parameters.Add(new SqlParameter("@genero", SqlDbType.VarChar, 100));
-                cmd.Parameters["@genero"].Value = mcEntidad.genero;
-
-                cmd.Parameters.Add(new SqlParameter("@curp", SqlDbType.VarChar, 100));
-                cmd.Parameters["@curp"].Value = mcEntidad.curp;
+             
 
                 cmd.Parameters.Add(new SqlParameter("@idContratoServicio", SqlDbType.VarChar, 100));
                 cmd.Parameters["@idContratoServicio"].Value = mcEntidad.idContratoServicio;
@@ -111,6 +56,9 @@ namespace Datos
                 cmd.Parameters.Add(new SqlParameter("@Ocupacion", SqlDbType.VarChar, 100));
                 cmd.Parameters["@Ocupacion"].Value = mcEntidad.OC_IDOcupacion;
 
+                cmd.Parameters.Add(new SqlParameter("@prestadorServicios", SqlDbType.VarChar, 100));
+                cmd.Parameters["@prestadorServicios"].Value = mcEntidad.idPrestServic;
+
                 cmd.Parameters.Add(new SqlParameter("@ImporteTotal", SqlDbType.VarChar, 100));
                 cmd.Parameters["@ImporteTotal"].Value = mcEntidad.importTotal;
 
@@ -125,6 +73,15 @@ namespace Datos
 
                 cmd.Parameters.Add(new SqlParameter("@idEstatusContratoServicios", SqlDbType.VarChar, 100));
                 cmd.Parameters["@idEstatusContratoServicios"].Value = mcEntidad.idEstatContratServic;
+
+                cmd.Parameters.Add(new SqlParameter("@usuarioCap", SqlDbType.VarChar, 100));
+                cmd.Parameters["@usuarioCap"].Value = mcEntidad.usuarioCap;
+
+                cmd.Parameters.Add(new SqlParameter("@compuCap", SqlDbType.VarChar, 100));
+                cmd.Parameters["@compuCap"].Value = mcEntidad.compuCap;
+
+                cmd.Parameters.Add(new SqlParameter("@fechaCap", SqlDbType.VarChar, 100));
+                cmd.Parameters["@fechaCap"].Value = mcEntidad.fechaCap;
 
                 cmd.Parameters.Add(new SqlParameter("@Actividades", SqlDbType.VarChar, 100));
                 cmd.Parameters["@Actividades"].Value = mcEntidad.activ;

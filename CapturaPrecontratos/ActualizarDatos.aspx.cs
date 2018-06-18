@@ -4,19 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
 using Entidades;
 using Logica;
 
 namespace CapturaPrecontratos
 {
-    public partial class InsertarActualizarClientes : System.Web.UI.Page
+    public partial class ActualizarDatos : System.Web.UI.Page
     {
-        clientesNegocioDemo ClientNego = new clientesNegocioDemo();
-        atributosDemo ClientEnti = new atributosDemo();
-
+        funciones ClientNego = new funciones();
+        Atributos ClientEnti = new Atributos();
         protected void Page_Load(object sender, EventArgs e)
         {
+             
             if (!Page.IsPostBack)
             {
                 MostrarDatos();
@@ -27,16 +26,17 @@ namespace CapturaPrecontratos
         {
             try
             {
-                string strCD = Session["CodigoCliente"].ToString();
+                string strCD = Session["idContratoServicio"].ToString();
                 ClientEnti = ClientNego.ConsultarCliente(strCD);
                 {
-                    txtCodigo.Text = ClientEnti.codigoCliente;
-                    txtNombres.Text = ClientEnti.nombresCliente;
-                    txtApellidos.Text = ClientEnti.apellidosCliente;
-                    txtCorreo.Text = ClientEnti.correoCliente;
+                    txtIdContrato.Text = ClientEnti.idContratoServicio.ToString();
+                    txtIdDependencia.Text = ClientEnti.idDependencia;
+                    txtIdDepartamento.Text = ClientEnti.idDepartamento;
+                    txtUnidadAdmin.Text = ClientEnti.unidAdmin;
                     btnGrabar.Enabled = false;
                     btnActualizar.Enabled = true;
                     btnCancelar.Enabled = true;
+
                 }
             }
             catch (Exception)
@@ -45,20 +45,20 @@ namespace CapturaPrecontratos
         }
         protected void btnGrabar_Click(object sender, EventArgs e)
         {
-            if (this.txtApellidos.Text.Trim() != ""
-               && this.txtNombres.Text.Trim() != "" && this.txtCorreo.Text.Trim() != "")
+            if (this.txtIdDependencia.Text.Trim() != ""
+               && this.txtIdDepartamento.Text.Trim() != "" && this.txtUnidadAdmin.Text.Trim() != "")
             {
                 try
                 {
-                    
-                    ClientEnti.nombresCliente = txtNombres.Text;
-                    ClientEnti.apellidosCliente = txtApellidos.Text;
-                    ClientEnti.correoCliente = txtCorreo.Text;
-                    ClientEnti.estadoCliente = 1;
+
+                    ClientEnti.idDependencia = txtIdDependencia.Text;
+                    ClientEnti.idDepartamento = txtIdDepartamento.Text;
+                    ClientEnti.unidAdmin = txtUnidadAdmin.Text;
+                    ClientEnti.idEstatContratServic = 3;
                     if (ClientNego.InsertarCliente(ClientEnti) == true)
                     {
                         lblMensaje.Text = "Registro Guardado Correctamente";
-                        Response.Redirect("~/ListarClientes.aspx");
+                        Response.Redirect("~/About");
                     }
                     else
                     {
@@ -77,21 +77,24 @@ namespace CapturaPrecontratos
         }
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
-            if (this.txtCodigo.Text.Trim() != "" && this.txtApellidos.Text.Trim() != ""
-              && this.txtNombres.Text.Trim() != "" && this.txtCorreo.Text.Trim() != "")
+            if (this.txtIdContrato.Text.Trim() != ""
+               && this.txtIdDependencia.Text.Trim() != "" 
+               && this.txtIdDepartamento.Text.Trim() != ""
+               && this.txtUnidadAdmin.Text.Trim() != "")
             {
                 try
                 {
 
-                    ClientEnti.codigoCliente = txtCodigo.Text;
-                    ClientEnti.nombresCliente = txtNombres.Text;
-                    ClientEnti.apellidosCliente = txtApellidos.Text;
-                    ClientEnti.correoCliente = txtCorreo.Text;
+                    ClientEnti.idContratoServicio = int.Parse(txtIdContrato.Text);
+                    ClientEnti.idDependencia = txtIdDependencia.Text;
+                    ClientEnti.idDepartamento = txtIdDepartamento.Text;
+                    ClientEnti.unidAdmin = txtUnidadAdmin.Text;
+
                     if (ClientNego.ActualizarCliente(ClientEnti) == true)
                     {
                         lblMensaje.Text = "Registro Actualizado Correctamente";
                         Session.RemoveAll();
-                        Response.Redirect("~/ListarClientes.aspx");
+                        Response.Redirect("~/About");
                     }
                     else
                     {
@@ -117,8 +120,10 @@ namespace CapturaPrecontratos
         protected void btnSalir_Click(object sender, EventArgs e)
         {
             Session.RemoveAll();
-            Response.Redirect("~/ListarClientes.aspx");
+            Response.Redirect("~/About");
 
         }
+
     }
+    
 }

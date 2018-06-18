@@ -35,13 +35,13 @@
                     <label for="genero">Genero:</label>
                     <!--<input type="email" class="form-control">-->
                     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="sqlDS_precontratos" DataTextField="Genero" DataValueField="id" class="form-control"></asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="sqlDS_precontratos" ConnectionString='<%$ ConnectionStrings:PrecontratosConnectionString %>' SelectCommand="SELECT [id], [Genero] FROM [Genero]"></asp:SqlDataSource>
+                    <asp:SqlDataSource runat="server" ID="sqlDS_precontratos" ConnectionString='<%$ ConnectionStrings:conexion %>' SelectCommand="SELECT [id], [Genero] FROM [Genero]"></asp:SqlDataSource>
                 </div>
                  <!-- lista de lugar de nacimiento-->
                 <div class="form-group col-sm-3">
                     <label for="lugarNacimiento">Lugar de Nacimiento:</label>
                     <asp:DropDownList ID="lugarNacimiento" runat="server" DataSourceID="estados2" DataTextField="estado" DataValueField="id" class="form-control"></asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="estados2" ConnectionString='<%$ ConnectionStrings:PrecontratosConnectionString %>' SelectCommand="SELECT [id], [estado] FROM [estados]"></asp:SqlDataSource>
+                    <asp:SqlDataSource runat="server" ID="estados2" ConnectionString='<%$ ConnectionStrings:conexion %>' SelectCommand="SELECT [id], [estado] FROM [estados]"></asp:SqlDataSource>
                 </div>
                 <div class="form-group col-sm-3">
                     <label for="rfc">R.F.C:</label>
@@ -61,7 +61,7 @@
                 <div class="form-group col-sm-3">
                     <label for="nacionalidad">Nacionalidad:</label>
                     <asp:DropDownList ID="Nacionalidades" runat="server" DataSourceID="nacionalidad1" DataTextField="nacionalidad" CssClass="form-control" DataValueField="id"></asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="nacionalidad1" ConnectionString='<%$ ConnectionStrings:PrecontratosConnectionString %>' SelectCommand="SELECT [id], [nacionalidad] FROM [nacionalidad]"></asp:SqlDataSource>
+                    <asp:SqlDataSource runat="server" ID="nacionalidad1" ConnectionString='<%$ ConnectionStrings:conexion %>' SelectCommand="SELECT [id], [nacionalidad] FROM [nacionalidad]"></asp:SqlDataSource>
                 </div>
                 <div class="form-group col-sm-3">
                     <label for="calle">Calle:</label>
@@ -88,7 +88,7 @@
                     <label for="estado">Estado:</label>
                   <!--  <input type="email" class="form-control">-->
                     <asp:DropDownList ID="DropDownList3"  runat="server" class="form-control" DataSourceID="Estados" DataTextField="estado" DataValueField="id" OnTextChanged="DropDownList3_TextChanged"></asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="Estados" ConnectionString='<%$ ConnectionStrings:PrecontratosConnectionString %>' SelectCommand="SELECT [id], [estado] FROM [estados]"></asp:SqlDataSource>  
+                    <asp:SqlDataSource runat="server" ID="Estados" ConnectionString='<%$ ConnectionStrings:conexion %>' SelectCommand="SELECT [id], [estado] FROM [estados]"></asp:SqlDataSource>  
                    <asp:Button ID="Button2" runat="server" Text="Generar"  class="btn btn-default" />
                 </div>
                 <script></script> 
@@ -96,7 +96,7 @@
                     <label for="municipio">Municipio:</label>
                    <!-- <input type="email" class="form-control" >-->
                     <asp:DropDownList ID="DDLMunicipio" runat="server" class="form-control" DataSourceID="ssdl" DataTextField="municipio" DataValueField="id"></asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="ssdl" ConnectionString='<%$ ConnectionStrings:PrecontratosConnectionString %>' SelectCommand="spGetMunicipios" SelectCommandType="StoredProcedure">
+                    <asp:SqlDataSource runat="server" ID="ssdl" ConnectionString='<%$ ConnectionStrings:conexion %>' SelectCommand="spGetMunicipios" SelectCommandType="StoredProcedure">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="DropDownList3" PropertyName="SelectedValue" DefaultValue="1" Name="estado" Type="Int32" ></asp:ControlParameter>
                         </SelectParameters>
@@ -132,6 +132,7 @@
         <div class="row">
             <!-- primer bloque-->
             <div class="col-sm-12">
+                 
                 <div class="form-group col-sm-3">
                     <label for="FechaInicial">Fecha Inicial:</label>
                     <asp:TextBox runat="server" type="date" id="FechaInicial" CssClass="form-control" name="FechaInicial"/>
@@ -148,12 +149,12 @@
                    <asp:Button ID="Button3" runat="server" Text="Generar Departamento"  class="btn btn-default" />
 
 
-                    <asp:SqlDataSource runat="server" ID="sdlDependencia" ConnectionString='<%$ ConnectionStrings:PrecontratosConnectionString %>' SelectCommand="SELECT [IDDependencia], [Nombre] FROM [Dependencia]"></asp:SqlDataSource>
+                    <asp:SqlDataSource runat="server" ID="sdlDependencia" ConnectionString='<%$ ConnectionStrings:conexion %>' SelectCommand="SELECT [IDDependencia], [Nombre] FROM [Dependencia]"></asp:SqlDataSource>
                 </div>
                 <div class="form-group col-sm-3">
                     <label for="materno">Departamento:</label>
                     <asp:DropDownList ID="departamento" name="departamento" class="form-control" runat="server" DataSourceID="ddlDepartamentos" DataTextField="Nombre" DataValueField="IDDepartamento"></asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="ddlDepartamentos" ConnectionString='<%$ ConnectionStrings:PrecontratosConnectionString %>' SelectCommand="spGetDepartamentos" SelectCommandType="StoredProcedure">
+                    <asp:SqlDataSource runat="server" ID="ddlDepartamentos" ConnectionString='<%$ ConnectionStrings:conexion %>' SelectCommand="spGetDepartamentos" SelectCommandType="StoredProcedure">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="dependencia" PropertyName="SelectedValue" DefaultValue="1" Name="dependencia" Type="String"></asp:ControlParameter>
                         </SelectParameters>
@@ -169,7 +170,7 @@
                  <div class="form-group col-sm-3">
                     <label for="Unidad">Unidad Administrativa:</label>
                     <asp:DropDownList ID="unidadAdministrativa" runat="server" CssClass="form-control" DataSourceID="ddlUniAdmin" DataTextField="cDescripcionCorta" DataValueField="cIdUnidadAdministrativa"></asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="ddlUniAdmin" ConnectionString='<%$ ConnectionStrings:PrecontratosConnectionString %>' SelectCommand="spGetUnidadAdmin" SelectCommandType="StoredProcedure">
+                    <asp:SqlDataSource runat="server" ID="ddlUniAdmin" ConnectionString='<%$ ConnectionStrings:conexion %>' SelectCommand="spGetUnidadAdmin" SelectCommandType="StoredProcedure">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="FechaInicial" PropertyName="Text" Name="ejercicio" Type="DateTime"></asp:ControlParameter>
                         </SelectParameters>
@@ -178,7 +179,7 @@
                  <div class="form-group col-sm-3">
                     <label for="partida">Partida:</label>
                      <asp:DropDownList ID="partidaCodigo" runat="server" CssClass="form-control" DataSourceID="ssdpartida" DataTextField="COG" DataValueField="IdCOG"></asp:DropDownList>
-                     <asp:SqlDataSource runat="server" ID="ssdpartida" ConnectionString='<%$ ConnectionStrings:PrecontratosConnectionString %>' SelectCommand="spGetPartidas" SelectCommandType="StoredProcedure">
+                     <asp:SqlDataSource runat="server" ID="ssdpartida" ConnectionString='<%$ ConnectionStrings:conexion %>' SelectCommand="spGetPartidas" SelectCommandType="StoredProcedure">
                          <SelectParameters>
                              <asp:ControlParameter ControlID="FechaInicial" PropertyName="Text" DefaultValue="" Name="ejercicio" Type="DateTime"></asp:ControlParameter>
                          </SelectParameters>
@@ -187,7 +188,7 @@
                  <div class="form-group col-sm-3">
                     <label for="estatusContrato">Estatus:</label>
                       <asp:DropDownList ID="estatusContrato" class="form-control" runat="server" DataSourceID="estatusContrato2" DataTextField="Estatus" DataValueField="id"></asp:DropDownList>
-                      <asp:SqlDataSource runat="server" ID="estatusContrato2" ConnectionString='<%$ ConnectionStrings:PrecontratosConnectionString %>' SelectCommand="SELECT [id], [Estatus] FROM [Estatus]"></asp:SqlDataSource>
+                      <asp:SqlDataSource runat="server" ID="estatusContrato2" ConnectionString='<%$ ConnectionStrings:conexion %>' SelectCommand="SELECT [id], [Estatus] FROM [Estatus]"></asp:SqlDataSource>
                   </div>
          
             </div>
@@ -205,12 +206,12 @@
                 <div class="form-group col-sm-3">
                     <label for="lugarNacimiento">Ocupacion:</label>
                     <asp:DropDownList ID="ocupacion" runat="server" DataSourceID="ocupaciones" DataTextField="Ocupacion" DataValueField="idOcupacion" class="form-control"></asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="ocupaciones" ConnectionString='<%$ ConnectionStrings:PrecontratosConnectionString %>' SelectCommand="SELECT [idOcupacion], [Ocupacion] FROM [Ocupacion]"></asp:SqlDataSource>
+                    <asp:SqlDataSource runat="server" ID="ocupaciones" ConnectionString='<%$ ConnectionStrings:conexion %>' SelectCommand="SELECT [idOcupacion], [Ocupacion] FROM [Ocupacion]"></asp:SqlDataSource>
                 </div>
                 <div class="form-group col-sm-3">
                     <label for="estatus">SupTipo:</label>
                     <asp:DropDownList ID="subtipo" CssClass="form-control" runat="server" DataSourceID="ssdlsubtipo" DataTextField="tipo" DataValueField="id"></asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="ssdlsubtipo" ConnectionString='<%$ ConnectionStrings:PrecontratosConnectionString %>' SelectCommand="SELECT [id], [tipo] FROM [subtipo]"></asp:SqlDataSource>
+                    <asp:SqlDataSource runat="server" ID="ssdlsubtipo" ConnectionString='<%$ ConnectionStrings:conexion %>' SelectCommand="SELECT [id], [tipo] FROM [subtipo]"></asp:SqlDataSource>
                 </div>
             </div>
             <!-- cuarto bloque-->
@@ -240,8 +241,10 @@
                     </div>
             </div>
             <asp:Button ID="Button1" runat="server" Text="Guardar"  class="btn btn-primary" OnClick="btnGuardar_Click" /> <!--Enabled="false"   OnClick="btnGuardar_Click"-->
+            
+            
         </div>
     </div>
    
-
+    <asp:label  runat="server" ID="lblMensaje"></asp:label>
 </asp:Content>

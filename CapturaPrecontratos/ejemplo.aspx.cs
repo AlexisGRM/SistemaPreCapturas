@@ -13,11 +13,15 @@ namespace CapturaPrecontratos
 {
     public partial class ejemplo : System.Web.UI.Page
     {
+        Atributos obj = new Atributos();
+        funciones ClientNego = new funciones();
+
         protected void Page_Load(object sender, EventArgs e)
         {
            
-        }
 
+        }
+        
         protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -31,7 +35,7 @@ namespace CapturaPrecontratos
 
         }
 
-        Atributos obj = new Atributos();
+        
 
         short ejercicio = 0;
         
@@ -100,5 +104,6 @@ namespace CapturaPrecontratos
 
             //
         }
+         
     }
 }

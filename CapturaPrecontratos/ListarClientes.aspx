@@ -46,7 +46,7 @@
                                 <asp:BoundField DataField="codigo" HeaderText="Código" />
                                 <asp:BoundField DataField="nombres" HeaderText="Nombres" />
                                 <asp:BoundField DataField="apellidos" HeaderText="Apellidos" />
-                                <asp:BoundField DataField="correo" HeaderText="Correo" />
+                                
                             </Columns>
                             <EditRowStyle BackColor="#7C6F57" />
                             <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
