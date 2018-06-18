@@ -14,6 +14,7 @@ namespace Logica
     public class funciones
     {
         ConexionDatos obj = new ConexionDatos();
+        //ConexionDatos obj2 = new ConexionDatos();
 
         public int insertDato(Atributos solicitud)
         {
@@ -34,5 +35,6 @@ namespace Logica
         {
             return obj.InsertArchivo(solicitud3);
         }*/
+        
     }
 }
